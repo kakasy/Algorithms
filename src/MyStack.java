@@ -62,4 +62,43 @@ public class MyStack<T> implements Iterable<T> {
             return item;
         }
     }
+
+
+    public void all() {
+        for (Node x = first; x != null; x = x.next) {
+            System.out.println(x.item);
+        }
+    }
+
+
+    public void delete(int k) {
+
+        Node current = first; // ссылка на первый элемент списка
+        /*не нужны*/
+//        Node previous = null; // ссылка на элемент перед удаляемым
+//        Node ahead = null; // ссылка на элемент после удаляемого
+
+        if(current == null){ // проверяем пуст ли список
+            throw new NullPointerException();
+        }
+
+        if (k < 0 || k >= size()){ // если k - отрицательное число или больше размера списка
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (k == 0) { // если удаляемый элемент списка - голова, делаем новой головой следующий за ним
+            first = first.next;
+        }
+
+        else {
+            for (int i = 0; i < k - 1; i++) { // если k != 0
+                current = current.next;       // проходим по списку на позицию k
+            }
+        }
+        if (current != null) { // если текущий элемент есть
+            current.next = current.next.next; // следующим за ним элементом делаем элемент,
+                                             // который стоит после удаляемого
+        }
+        N--;
+    }
 }
