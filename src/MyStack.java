@@ -70,7 +70,6 @@ public class MyStack<T> implements Iterable<T> {
         }
     }
 
-
     public void delete(int k) {
 
         Node current = first; // ссылка на первый элемент списка
@@ -100,5 +99,14 @@ public class MyStack<T> implements Iterable<T> {
                                              // который стоит после удаляемого
         }
         N--;
+    }
+
+    public boolean find(MyStack<T> myStack, T key) {
+        for (Node x = first; x != null; x = x.next) {
+            if (x.item.equals(key)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
